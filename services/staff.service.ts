@@ -215,10 +215,17 @@ export const staffService = {
     },
 
     createAdmin: async (userData: any): Promise<any> => {
+        const isFormData = userData instanceof FormData;
+        const headers: any = getHeaders();
+
+        if (isFormData) {
+            delete headers['Content-Type'];
+        }
+
         const response = await fetch(`${API_BASE_URL}/admins`, {
             method: 'POST',
-            headers: getHeaders(),
-            body: JSON.stringify(userData)
+            headers: headers,
+            body: isFormData ? userData : JSON.stringify(userData)
         });
 
         const data = await response.json();
