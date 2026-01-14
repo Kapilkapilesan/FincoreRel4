@@ -99,6 +99,7 @@ export function LoanEdit() {
         if (!formData.guardian_address) return 'Guardian Address is required.';
         if (!formData.guardian_phone) return 'Guardian Phone is required.';
         if (!/^\d{10}$/.test(formData.guardian_phone)) return 'Guardian Phone must be 10 digits.';
+        if (!formData.guardian_relationship) return 'Guardian Relationship is required.';
 
         if (!formData.witness1_id) return 'Witness 01 is required.';
         if (!formData.witness2_id) return 'Witness 02 is required.';
@@ -199,6 +200,8 @@ export function LoanEdit() {
                 guardian_name: formData.guardian_name,
                 guardian_address: formData.guardian_address,
                 guardian_phone: formData.guardian_phone,
+                guardian_relationship: formData.guardian_relationship,
+                guardian_secondary_phone: formData.guardian_secondary_phone,
                 guarantor1_name: formData.guarantor1_name,
                 guarantor1_nic: formData.guarantor1_nic,
                 guarantor2_name: formData.guarantor2_name,
